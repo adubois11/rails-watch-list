@@ -1,0 +1,28 @@
+<h1>Ajouter un film à la liste : <%= @list.name %></h1>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <% if @bookmark.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bookmark.errors.count, "erreur") %> interdit cette action :</h2>
+      <ul>
+        <% @bookmark.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.input :movie_id, collection: @movies.collect { |movie| [movie.title, movie.id] }, label: "Choisir un film", prompt: "Sélectionnez un film" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :comment, label: "Ajouter un commentaire" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Ajouter ce film à la liste", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour à la liste des films', @list %>

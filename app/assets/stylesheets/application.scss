@@ -1,0 +1,40 @@
+.banner {
+  background-image: image-url('banner-background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombre de texte */
+  filter: grayscale(0.5);
+  padding-top: 4rem;
+
+}
+
+.container {
+  width: 60%;
+  padding: 2rem;
+}
+
+
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.card-img{
+  opacity: 0.8;
+  filter: grayscale(1);
+}
+
+.card-title a {
+  text-decoration: none;
+  font-size: xx-large;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombre de texte */
+}
+
+.star-rating i {
+  color: #ffcc00; /* Couleur jaune pour les étoiles */
+  font-size: 1.5rem; /* Taille des étoiles */
+}

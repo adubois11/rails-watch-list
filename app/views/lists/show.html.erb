@@ -1,0 +1,43 @@
+<h1><%= @list.name %></h1>
+
+<%= link_to 'Ajouter un film à cette liste', new_list_bookmark_path(@list), class: "btn btn-primary" %>
+
+<h2>Films dans cette liste :</h2>
+
+
+
+<div class="container">
+<div class="card-group"><% @list.movies.each do |movie| %>
+  <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+    <div class="card" style="width: 18rem;">
+      <img src="<%= movie.poster_url %>" alt="<%= movie.title %>" width="200">
+         <div class="card-body">
+          <h5 class="card-title"><%= movie.title %></h5>
+            <p class="card-text"><%= movie.overview %></p>
+             <p>Note : <%= movie.rating %></p>
+         <%= link_to 'Supprimer', bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %></li>
+      </div>
+      <!-- Star Rating -->
+        <div class="card-body">
+    <div class="star-rating">
+            <% rating = (movie.rating / 2).round %> <!-- Conversion de la note de 10 à 5 -->
+            <% full_stars = rating.to_i %>        <!-- Nombre d'étoiles pleines -->
+            <% half_star = (movie.rating % 2 >= 1) ? true : false %>  <!-- Vérifie si une étoile partielle est nécessaire -->
+            <% empty_stars = 5 - full_stars - (half_star ? 1 : 0) %>   <!-- Nombre d'étoiles vides -->
+
+            <!-- Affichage des étoiles pleines -->
+            <%= raw ('<i class="fas fa-star"></i>' * full_stars) %>
+
+            <!-- Affichage des étoiles partielles -->
+            <% if half_star %>
+              <i class="fas fa-star-half-alt"></i>
+            <% end %>
+
+            <!-- Affichage des étoiles vides -->
+            <%= raw ('<i class="far fa-star"></i>' * empty_stars) %>
+          </div>
+        </div>
+    </div>
+  <% end %>
+</div></div>
+<%= link_to 'Retour à la liste des listes', lists_path, class: "btn btn-secondary" %>

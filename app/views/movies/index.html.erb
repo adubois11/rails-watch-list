@@ -1,0 +1,15 @@
+<h1>Liste des Films</h1>
+
+<!-- Affichage de la liste des films -->
+<ul>
+  <% @movies.each do |movie| %>
+    <li>
+      <h2><%= movie.title %></h2>
+      <p><%= movie.overview %></p>
+      <% if movie.poster_url.present? %>
+        <img src="<%= movie.poster_url %>" alt="<%= movie.title %>" width="200">
+      <% end %>
+      <p>Note : <%= movie.rating %></p>
+    </li>
+  <% end %>
+</ul>

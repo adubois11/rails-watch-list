@@ -1,0 +1,24 @@
+<h1>Créer une nouvelle Liste</h1>
+
+<%= simple_form_for @list do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@list.errors.count, "error") %> interdit cette liste d'être sauvegardée :</h2>
+      <ul>
+        <% @list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.input :name, label: "Nom de la liste", input_html: { class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Créer Liste", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour à la liste des listes', lists_path %>

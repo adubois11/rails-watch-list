@@ -1,0 +1,34 @@
+<div class="banner d-flex justify-content-center align-items-center" >
+  <!-- Contenu de la bannière (par exemple, un titre et un bouton) -->
+  <div class="text-center text-white">
+    <h1>Save any kind of movie!</h1>
+    <p class="lead">Découvrez nos fonctionnalités incroyables.</p>
+    <a href="#" class="btn btn-primary">Commencer</a>
+  </div>
+</div>
+
+<div class="container">
+<h1>Mes Listes</h1>
+
+
+
+
+
+
+<div class="row justify-content-center" >
+  <% @lists.each do |list| %>
+    <div class="col-md-2 mb-3  ">
+      <div class="card text-bg-dark" style="max-width: 16rem;">
+        <!-- Utilisation de image_tag pour afficher l'image -->
+        <%= image_tag('horror-background.jpg', class: 'card-img', alt: 'Card image') %>
+         <!-- Overlay avec Flexbox pour centrer le texte -->
+        <div class="card-img-overlay d-flex justify-content-center align-items-center">
+          <h5 class="card-title text-center"><%= link_to list.name, list_path(list), class: 'text-white' %></h5>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<%= link_to 'Créer une nouvelle liste', new_list_path, class: 'btn btn-outline-dark' %>
+</div>
+
+</div>

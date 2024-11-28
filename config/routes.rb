@@ -7,4 +7,21 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+   # Définir la route pour afficher la liste des films
+   #resources :movies, only: [:index]
+    #resources :lists, only: [:index, :show, :new, :create]
+
+   # Définir la route racine vers l'index des films
+   #root 'movies#index'
+    # Routes pour les listes
+  resources :lists, only: [:index, :show, :new, :create] do
+    resources :bookmarks, only: [:new, :create]
+  end
+
+    # Route pour supprimer un signet : DELETE, pas GET
+  resources :bookmarks, only: [:destroy]
+
+  root 'lists#index'
+
 end
