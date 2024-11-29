@@ -2,10 +2,11 @@
   background-image: image-url('banner-background.jpg');
   background-size: cover;
   background-position: center;
-  height: 400px;
+  height: 10%;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Ombre de texte */
-  filter: grayscale(0.5);
   padding-top: 4rem;
+  padding-bottom: 1rem;
+  filter: grayscale(0.8);
 
 }
 
